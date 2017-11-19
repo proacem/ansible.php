@@ -54,7 +54,7 @@
     owner: root
     group: root
     mode: "0644"
-  notify: 
+  notify:
     - restart php-fpm
     - enabled php-fpm
   tags:
@@ -69,7 +69,7 @@
     mode: "0644"
   with_items: "{{ sites }}"
   when: item.nginx.php == 1
-  notify: 
+  notify:
     - restart php-fpm
     - enabled php-fpm
   tags:

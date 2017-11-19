@@ -14,4 +14,4 @@
 - name: enabled php-fpm
   service:
     name: "{{ php_service_name }}"
-    enabled: yes
+    enabled: true
