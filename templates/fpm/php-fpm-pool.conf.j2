@@ -18,7 +18,7 @@ group = www-data
 rlimit_files = 131072
 rlimit_core = unlimited
 
-listen =  {{ php_pool_listen }}/{{ item.site }}.sock
+listen =  {{ php_pool_sock_dir }}/{{ item.site }}.sock
 listen.allowed_clients = 127.0.0.1
 ;listen.owner = {{ item.site | default('www-data') }}
 listen.owner = www-data
