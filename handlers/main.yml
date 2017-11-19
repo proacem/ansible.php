@@ -1,2 +1,17 @@
 ---
 # handlers file for sbaerlocher.php
+
+- name: restart php-fpm
+  service:
+    name: "{{ php_service_name }}"
+    state: restarted
+
+- name: start php-fpm
+  service:
+    name: "{{ php_service_name }}"
+    state: started
+
+- name: enabled php-fpm
+  service:
+    name: "{{ php_service_name }}"
+    enabled: yes

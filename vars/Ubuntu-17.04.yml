@@ -1,0 +1,21 @@
+---
+# vars file for sbaerlocher.php
+
+php_packages:
+  - php7.0-common
+  - php7.0-cli
+  - php7.0-intl
+  - php7.0-curl
+  - php7.0-cgi
+  - php7.0-fpm
+  - php7.0-mysql
+  - php7.0-gd
+
+php_ini_path: /etc/php/7.0/fpm
+php_fpm_path:  /etc/php/7.0/fpm
+php_fpm_pool_path: /etc/php/7.0/fpm/pool.d
+php_service_name: php7.0-fpm
+
+
+
+php_pool_listen: /run/php

@@ -14,3 +14,63 @@
   tags:
     - configuration
     - packages
+
+- name: Distribution | Include
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+        - "defaults.yml"
+      paths:
+        - "distribution"
+  tags:
+    - configuration
+    - packages
+
+- name: install php
+  become: true
+  package:
+    name: "{{ item }}"
+  with_items: "{{ php_packages }}"
+  tags:
+    - packages
+
+- name: configuring php.ini
+  template:
+    src: php.ini.j2
+    dest: "{{ php_ini_path }}/php.ini"
+    owner: root
+    group: root
+    mode: "0644"
+  tags:
+    - configuration
+
+- name: configuring php-fpm conf
+  template:
+    src: php-fpm.conf.j2
+    dest: "{{ php_fpm_path }}/php-fpm.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: 
+    - restart php-fpm
+    - enabled php-fpm
+  tags:
+    - configuration
+
+- name: configuring sites
+  template:
+    src: pool.conf.j2
+    dest: "{{ php_fpm_pool_path }}/{{ item.site }}.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  with_items: "{{ sites }}"
+  when: item.nginx.php == 1
+  notify: 
+    - restart php-fpm
+    - enabled php-fpm
+  tags:
+    - configuration
