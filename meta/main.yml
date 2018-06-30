@@ -1,6 +1,7 @@
 ---
 
 galaxy_info:
+  role_name: php
   author: Simon Baerlocher <sbaerlocher@sbaerlocher.ch>
   description: Installation and configuration of PHP on Ubuntu.
   license: license (MIT)
