@@ -4,6 +4,8 @@
 
 ## Description
 
+Installation and configuration of PHP on Ubuntu.
+
 ## Installation
 
 ```bash
@@ -12,14 +14,15 @@ ansible-galaxy install sbaerlocher.php
 
 ## Requirements
 
+None
+
 ## Role Variables
 
-| Variable             | Default     | Comments (type)                                   |
-| :---                 | :---        | :---                                              |
-| | | |
-| | | |
+See 'defaults/main.yml'
 
 ## Dependencies
+
+None
 
 ## Example Playbook
 
@@ -31,6 +34,10 @@ ansible-galaxy install sbaerlocher.php
 
 ## Changelog
 
+### 1.0
+
+* inital commit
+
 ## Author
 
 * [Simon Bärlocher](https://sbaerlocher.ch)
@@ -41,4 +48,4 @@ This project is under the MIT License. See the [LICENSE](https://sbaerlo.ch/lice
 
 ## Copyright
 
-(c) 2017, Simon Bärlocher
+(c) 2018, Simon Bärlocher
