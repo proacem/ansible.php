@@ -15,3 +15,8 @@
   service:
     name: "{{ php_service_name }}"
     enabled: true
+
+- name: removing default pool
+  file:
+    path: "{{ php_config_dir }}/fpm/pool.d/www.conf"
+    state: absent

@@ -14,6 +14,7 @@
   tags:
     - configuration
     - packages
+    - sites
 
 - name: Distribution | Include
   include_tasks: "{{ item }}"
@@ -34,35 +35,25 @@
   package:
     name: "{{ item }}"
   with_items: "{{ php_packages }}"
+  notify:
+    - enabled php-fpm
+    - removing default pool
   tags:
     - packages
 
-- name: configuring cli php.ini
+- name: configuring php.ini
   become: true
   template:
-    src: cli/php.ini.j2
-    dest: "{{ php_config_dir }}/cli/php.ini"
+    src: "{{ item }}/php.ini.j2"
+    dest: "{{ php_config_dir }}/{{ item }}/php.ini"
     owner: root
     group: root
     mode: "0644"
+  with_items:
+    - cli
+    - fpm
   notify:
     - restart php-fpm
-    - enabled php-fpm
-  tags:
-    - configuration
-
-
-- name: configuring fpm php.ini
-  become: true
-  template:
-    src: fpm/php.ini.j2
-    dest: "{{ php_config_dir }}/fpm/php.ini"
-    owner: root
-    group: root
-    mode: "0644"
-  notify:
-    - restart php-fpm
-    - enabled php-fpm
   tags:
     - configuration
 
@@ -76,22 +67,19 @@
     mode: "0644"
   notify:
     - restart php-fpm
-    - enabled php-fpm
   tags:
     - configuration
 
 - name: configuring php-fpm pool
   become: true
   template:
-    src: fpm/php-fpm-pool.conf.j2
+    src: fpm/pool.d/php-fpm.conf.j2
     dest: "{{ php_config_dir }}/fpm/pool.d/{{ item.site }}.conf"
     owner: root
     group: root
     mode: "0644"
   with_items: "{{ sites }}"
-  when: item.nginx.php == 1
   notify:
     - restart php-fpm
-    - enabled php-fpm
   tags:
-    - configuration
+    - sites

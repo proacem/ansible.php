@@ -1,0 +1,27 @@
+---
+# vars file for sbaerlocher.php
+
+php_version: 7.1
+
+php_packages:
+  - php{{ php_version }}-common
+  - php{{ php_version }}-cli
+  - php{{ php_version }}-intl
+  - php{{ php_version }}-curl
+  - php{{ php_version }}-cgi
+  - php{{ php_version }}-fpm
+  - php{{ php_version }}-mysql
+  - php{{ php_version }}-gd
+  - php{{ php_version }}-mbstring
+  - php{{ php_version }}-xml
+  - php{{ php_version }}-zip
+  - php{{ php_version }}-sqlite3
+  - php{{ php_version }}-redis
+
+php_service_name: php{{ php_version }}-fpm
+
+php_config_dir: /etc/php/{{ php_version }}
+php_pool_sock_dir: /run/php
+
+php_default_users: www-data
+php_default_group: www-data

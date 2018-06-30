@@ -1,0 +1,7 @@
+---
+# tasks file for sbaerlocher.php
+
+- name: "{{ ansible_distribution | lower }} | add repository"
+  become: true
+  apt_repository:
+    repo: ppa:ondrej/php
