@@ -1,2 +1,22 @@
 ---
 # handlers file for sbaerlocher.php
+
+- name: restart php-fpm
+  service:
+    name: "{{ php_service_name }}"
+    state: restarted
+
+- name: start php-fpm
+  service:
+    name: "{{ php_service_name }}"
+    state: started
+
+- name: enabled php-fpm
+  service:
+    name: "{{ php_service_name }}"
+    enabled: true
+
+- name: removing default pool
+  file:
+    path: "{{ php_config_dir }}/fpm/pool.d/www.conf"
+    state: absent

@@ -1,0 +1,8 @@
+; {{ ansible_managed }}
+
+[{{ item.site }}]
+
+{% for key,value in php_fpm_pool.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+

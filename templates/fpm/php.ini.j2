@@ -1,0 +1,309 @@
+; {{ ansible_managed }}
+[PHP]
+
+;;;;;;;;;;;;;;;;;;;;
+; php.ini Options  ;
+;;;;;;;;;;;;;;;;;;;;
+
+{% for key,value in php_ini_options_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+
+;;;;;;;;;;;;;;;;;;;;
+; Language Options ;
+;;;;;;;;;;;;;;;;;;;;
+
+{% for key,value in php_language_options_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+
+;;;;;;;;;;;;;;;;;
+; Miscellaneous ;
+;;;;;;;;;;;;;;;;;
+
+{% for key,value in php_miscellaneous_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+
+;;;;;;;;;;;;;;;;;;;
+; Resource Limits ;
+;;;;;;;;;;;;;;;;;;;
+
+{% for key,value in php_resource_limits_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Error handling and logging ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+{% for key,value in php_error_handling_and_logging_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+
+;;;;;;;;;;;;;;;;;
+; Data Handling ;
+;;;;;;;;;;;;;;;;;
+
+{% for key,value in php_data_handling_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; Paths and Directories ;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+{% for key,value in php_paths_and_directories_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+
+;;;;;;;;;;;;;;;;
+; File Uploads ;
+;;;;;;;;;;;;;;;;
+
+{% for key,value in php_file_uploads_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+
+;;;;;;;;;;;;;;;;;;
+; Fopen wrappers ;
+;;;;;;;;;;;;;;;;;;
+
+{% for key,value in php_fopen_wrappers_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+
+;;;;;;;;;;;;;;;;;;;
+; Module Settings ;
+;;;;;;;;;;;;;;;;;;;
+
+{% if php_module_cli_defaults != None %}
+[CLI Server]
+{% for key,value in php_module_cli_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_date_defaults != None %}
+[Date]
+{% for key,value in php_module_date_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_filter_defaults != None %}
+[filter]
+{% for key,value in php_module_filter_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif%}
+
+{% if php_module_iconv_defaults != None %}
+[iconv]
+{% for key,value in php_module_iconv_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_intl_defaults != None %}
+[intl]
+{% for key,value in php_module_intl_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_sqlite3_defaults != None %}
+[sqlite3]
+{% for key,value in php_module_sqlite3_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_pcre_defaults != None %}
+[Pcre]
+{% for key,value in php_module_pcre_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_pdo_defaults != None %}
+[Pdo]
+{% for key,value in php_module_pdo_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_pdo_mysql_defaults != None %}
+[Pdo_mysql]
+{% for key,value in php_module_pdo_mysql_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_phar_defaults != None %}
+[Phar]
+{% for key,value in php_module_phar_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_mail_functio_defaults != None %}
+[mail function]
+{% for key,value in php_module_mail_functio_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_odbc_defaults != None %}
+[ODBC]
+{% for key,value in php_module_odbc_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_interbase_defaults != None %}
+[Interbase]
+{% for key,value in php_module_interbase_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_mysqli_defaults != None %}
+[MySQLi]
+{% for key,value in php_module_mysqli_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_mysqlnd_defaults != None %}
+[mysqlnd]
+{% for key,value in php_module_mysqlnd_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_OCI8_defaults != None %}
+[OCI8]
+{% for key,value in php_module_OCI8_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_PostgreSQL_defaults != None %}
+[PostgreSQL]
+{% for key,value in php_module_PostgreSQL_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_bcmath_defaults != None %}
+[bcmath]
+{% for key,value in php_module_bcmath_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_browscap_defaults != None %}
+[browscap]
+{% for key,value in php_module_browscap_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_session_defaults != None %}
+[Session]
+{% for key,value in php_module_session_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_assertion_defaults != None %}
+[Assertion]
+{% for key,value in php_module_assertion_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_com_defaults != None %}
+[COM]
+{% for key,value in php_module_com_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_mbstring_defaults != None %}
+[mbstring]
+{% for key,value in php_module_mbstring_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_gd_defaults != None %}
+[gd]
+{% for key,value in php_module_gd_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_exif_defaults != None %}
+[exif]
+{% for key,value in php_module_exif_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_Tidy_defaults != None %}
+[Tidy]
+{% for key,value in php_module_Tidy_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_soap_defaults != None %}
+[soap]
+{% for key,value in php_module_soap_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_sysvshm_defaults != None %}
+[sysvshm]
+{% for key,value in php_module_sysvshm_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_ldap_defaults != None %}
+[ldap]
+{% for key,value in php_module_ldap_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_dba_defaults != None %}
+[dba]
+{% for key,value in php_module_dba_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_opcache_defaults != None %}
+[opcache]
+{% for key,value in php_module_opcache_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_curl_defaults != None %}
+[curl]
+{% for key,value in php_module_curl_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+
+{% if php_module_openssl_defaults != None %}
+[openssl]
+{% for key,value in php_module_openssl_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}

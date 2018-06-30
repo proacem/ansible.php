@@ -1,0 +1,7 @@
+; {{ ansible_managed }}
+
+[global]
+{% for key,value in php_fpm_global_defaults.items()|sort %}
+{{ key }}={{ value }}
+{% endfor %}
+include=/etc/php/{{ php_version }}/fpm/pool.d/*.conf

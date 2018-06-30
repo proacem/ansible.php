@@ -14,3 +14,72 @@
   tags:
     - configuration
     - packages
+    - sites
+
+- name: Distribution | Include
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+        - "defaults.yml"
+      paths:
+        - "distribution"
+  tags:
+    - configuration
+    - packages
+
+- name: install php
+  become: true
+  package:
+    name: "{{ item }}"
+  with_items: "{{ php_packages }}"
+  notify:
+    - enabled php-fpm
+    - removing default pool
+  tags:
+    - packages
+
+- name: configuring php.ini
+  become: true
+  template:
+    src: "{{ item }}/php.ini.j2"
+    dest: "{{ php_config_dir }}/{{ item }}/php.ini"
+    owner: root
+    group: root
+    mode: "0644"
+  with_items:
+    - cli
+    - fpm
+  notify:
+    - restart php-fpm
+  tags:
+    - configuration
+
+- name: configuring php-fpm conf
+  become: true
+  template:
+    src: fpm/php-fpm.conf.j2
+    dest: "{{ php_config_dir }}/fpm/php-fpm.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - restart php-fpm
+  tags:
+    - configuration
+
+- name: configuring php-fpm pool
+  become: true
+  template:
+    src: fpm/pool.d/php-fpm.conf.j2
+    dest: "{{ php_config_dir }}/fpm/pool.d/{{ item.site }}.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  with_items: "{{ sites }}"
+  notify:
+    - restart php-fpm
+  tags:
+    - sites
