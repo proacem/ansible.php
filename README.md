@@ -34,6 +34,10 @@ None
 
 ## Changelog
 
+### 1.0.1
+
+* change to loop control
+
 ### 1.0
 
 * inital commit
